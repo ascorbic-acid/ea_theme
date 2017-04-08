@@ -1,0 +1,99 @@
+{% extends "templates/web.html" %}
+<!-- Head Section -->
+ {% block head %}
+    {% block style %}
+		{% include "templates/includes/common-styles.html"%}
+    {% endblock %}
+{% endblock %}
+
+<!-- Body Section -->
+	<!--navigation bar-->
+	{%- block navbar -%}
+        {% include "ea_theme/templates/includes/navbar.html" %}
+    {%- endblock -%}	
+		{% include "ea_theme/templates/includes/breadcrumb.html" %}	
+{% block page_content %}
+
+	<div class="aboutus">
+		<div class="container">
+			<h3>Our company introduction</h3>
+			<hr>
+			<div class="col-md-7 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+				<img src="/assets/ea_theme/images/7.jpg" class="img-responsive">
+				{{ company_intro }}
+				
+			</div>
+			<div class="col-md-5 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+				<div class="skill">
+					<h2>Our Skills</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+					<div class="progress-wrap">
+						<h3>Graphic Design</h3>
+						<div class="progress">
+						  <div class="progress-bar  color1" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+							<span class="bar-width">85%</span>
+						  </div>
+
+						</div>
+					</div>
+
+					<div class="progress-wrap">
+						<h4>HTML</h4>
+						<div class="progress">
+						  <div class="progress-bar color2" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+						   <span class="bar-width">95%</span>
+						  </div>
+						</div>
+					</div>
+
+					<div class="progress-wrap">
+						<h4>CSS</h4>
+						<div class="progress">
+						  <div class="progress-bar color3" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+							<span class="bar-width">80%</span>
+						  </div>
+						</div>
+					</div>
+
+					<div class="progress-wrap">
+						<h4>Wordpress</h4>
+						<div class="progress">
+						  <div class="progress-bar color4" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+							<span class="bar-width">90%</span>
+						  </div>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	
+	<div class="our-team">
+		<div class="container">
+			<h3>Our Team</h3>	
+			<div class="text-center">
+				<div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+					<img src="/assets/ea_theme/images/services/1.jpg" alt="" >
+					<h4>John Doe</h4>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing eil sed deiusmod tempor</p>
+				</div>
+				<div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+					<img src="/assets/ea_theme/images/services/2.jpg" alt="" >
+					<h4>John Doe</h4>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing eil sed deiusmod tempor</p>
+				</div>
+				<div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
+					<img src="/assets/ea_theme/images/services/3.jpg" alt="" >
+					<h4>John Doe</h4>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing eil sed deiusmod tempor</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+<!--template footer-->
+{% block footer %}{% include "ea_theme/templates/includes/footer.html" %}{% endblock %}
+{% block script %}
+	{% include "templates/includes/common-scripts.html" %}
+{% endblock %}

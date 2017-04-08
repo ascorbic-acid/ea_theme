@@ -1,0 +1,13 @@
+ 
+    	<script src="/assets/ea_theme/js/jquery.prettyPhoto.js"></script>
+	    <script src="/assets/ea_theme/js/wow.min.js"></script>
+		<script>
+			$(document).delay(100).ready(function() {
+				if(frappe.session.user != 'Guest'){
+					$('#iNavbar').append('<li role="presentation" id="liuser"><a href="desk">Welcome: ' +
+						frappe.session.user + '</a></li>');
+						$('#lilogin').remove();
+				}
+
+			})
+		</script>
