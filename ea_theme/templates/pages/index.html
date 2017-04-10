@@ -1,7 +1,5 @@
 {% extends "templates/web.html" %}
 
-
-
 <!-- Head Section -->
  {% block head %}
     {% block style %}
@@ -15,7 +13,7 @@
         {% include "ea_theme/templates/includes/navbar.html" %}
     {%- endblock -%}	
 		{% include "ea_theme/templates/includes/breadcrumb.html" %}	
-{% block page_content %}
+{% block hero %}
 	
 	<section id="main-slider" class="no-margin">
         <div class="carousel slide">      
@@ -30,13 +28,6 @@
                                     <a class="btn-slide animation animated-item-3" href="#">Read More</a>
                                 </div>
                             </div>
-
-                            <div class="col-sm-6 hidden-xs animation animated-item-4">
-                                <div class="slider-img">
-                                    <img src="/assets/ea_theme/images/slider/img3.png" class="img-responsive">
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div><!--/.item-->             
@@ -52,21 +43,19 @@
 				<p>About Us...
 				</p>
 			</div>
-			
-			<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" >
-				<h2>Template built with Twitter Bootstrap</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat 
-				libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-				libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-				libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-				<p> section 2</p>
-				<p>section 3</p>
+            <div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" >
+				<h2>about us</h2>
+				<img src="assets/ea_theme/images/6.jpg" class="img-responsive"/>
+				<p>Ebkar Technology & Management Solutions, Tripoli, Libya.
+				</p>
 			</div>
+			
+			
 		</div>
 	</div>
 	
 	<div class="lates">
-		<div class="container">
+		<div class="container-">
 			<div class="text-center">
 				<h2>Lates News</h2>
 			</div>

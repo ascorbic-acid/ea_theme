@@ -1,61 +1,115 @@
 {% extends "templates/web.html" %}
 
 <!-- Head Section -->
- {% block head %}
+{% block head %}
     {% block style %}
-            <!-- Bootstrap -->
-            <link rel="stylesheet" href="/assets/ea_theme/css/bootstrap.min.css"/>
-            <link rel="stylesheet" href="/assets/ea_theme/css/font-awesome.min.css"/>
-            <link rel="stylesheet" href="/assets/ea_theme/css/animate.css">
-            <link rel="stylesheet" href="/assets/ea_theme/css/prettyPhoto.css"/>
-            <link rel="stylesheet" href="/assets/ea_theme/css/style.css"/>
+		{% include "templates/includes/common-styles.html"%}
     {% endblock %}
 {% endblock %}
 <!-- Body Section -->
 	<!--navigation bar-->
 	{%- block navbar -%}
-        {% include "ea_theme/templates/includes/navbar.html" %}
+        {% include "templates/includes/navbar.html" %}
     {%- endblock -%}	
 		<!--breadcrumb bootstrap bar-->
-		{% include "ea_theme/templates/includes/breadcrumb.html" %}	
+		{% include "templates/includes/breadcrumb.html" %}	
 {% block page_content %}
-    <section id="contact-page">
-        <div class="container">
-            <div class="center" style="margin-top: 120px">        
-                <h2>Drop Your Message</h2>
-                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div> 
-            <div class="row contact-wrap"> 
-                <div class="status alert alert-success" style="display: none"></div>
-                <div class="col-md-6 col-md-offset-3">
+
+<div class="contact-content" style="margin-top: 114px">
+	{% if introduction %}
+	<div>
+		{{ introduction or "" }}<br>
+	</div>
+	{% endif %}
+	<div class="row">
+		<div class="col-md-8">
+
+			<span><i class="fa fa-home" style="color: limegreen; font-size: 12px">Shaikh St, Elnofleen, Tipoli, Libya</i></span>
+			<span><i class="fa fa-phone" style="color: limegreen; font-size: 12px">+218-21-7277525</i></span>
+			<span><i class="fa fa-envelope" style="color: limegreen; font-size: 12px">Shaikh St, Elnofleen, Tipoli, Libya</i></span>
+    			
+			<div id='gmap_canvas' style='height:440px;width:100%;'></div>
+			<style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+
+		</div>
+		<div class="col-md-4">
+							<p id="contact-alert" class="alert alert-success"
+				style="display: none;">&nbsp;</p>
+			<div class="form-group">
+				<select name="subject" class="form-control">
+				{% if query_options -%}
+					{% for option in query_options.split("\n") -%}
+					<option value="{{ option }}">{{ option }}</option>
+					{%- endfor %}
+				{% else %}
+					<option value="General">General</option>
+				{% endif %}
+				</select>
+			</div>
+
+
                     <div id="sendmessage">Your message has been sent. Thank you!</div>
-                    <div id="errormessage"></div>
-                    <form action="" method="post" role="form" class="contactForm">
-                            <div class="form-group">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                    <div class="validation"></div>
-                            </div>
-                            <div class="form-group">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                                    <div class="validation"></div>
-                            </div>
-                            <div class="form-group">
-                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                                    <div class="validation"></div>
-                            </div>
-                            <div class="form-group">
-                                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                                    <div class="validation"></div>
-                            </div>
-                        <div class="text-center"><button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Message</button></div>
-                    </form>                       
-                </div>
-            </div><!--/.row-->
-        </div><!--/.container-->
-    </section><!--/#contact-page-->
-{% endblock %}
-<!--template footer-->
-{% block footer %}{% include "ea_theme/templates/includes/footer.html" %}{% endblock %}
-{% block script %}
-	{% include "templates/includes/common-scripts.html" %}
+
+                <div class="form-group">
+				<input class="form-control" name="email" type="text"
+				placeholder="Your Email Address" />
+			</div>
+			<div class="form-group">
+				<textarea rows="10" name="message" class="form-control"
+				placeholder="Your Message" ></textarea>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-success btn-send btn-block">Send Message</button>
+			</div>
+  
+		</div>
+		{% if address_title %}
+		<div class="col-md-3 col-md-offset-1"
+				itemscope itemtype="http://schema.org/PostalAddress">
+			<h4 style="margin-top: 0px;"><i class="fa fa-map-marker"></i> {{ address_title }}</h4>
+			{% if address_line1 %}
+				<span itemprop="streetAddress">{{ address_line1 }}</span><br>
+			{% endif %}
+			{% if address_line2 %}
+				<span itemprop="streetAddress">{{ address_line2 }}</span><br>
+			{% endif %}
+			{% if city %}
+				<span itemprop="addressLocality">{{ city }}</span><br>
+			{% endif %}
+			{% if state %}
+				<span itemprop="addressRegion">{{ state }}</span><br>
+			{% endif %}
+			{% if pincode %}
+				<span itemprop="postalCode">{{ pincode }}</span><br>
+			{% endif %}
+			{% if country %}
+				<span itemprop="addressCountry">{{ country }}</span><br>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+</div>
+<script>
+	{% include "templates/includes/js/contact.js" %}
+</script>
+
+        <!-- var uluru = {lat: 32.884815, lng: 13.221111};-->
+
+	<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+	
+		<script type='text/javascript'>function init_map(){
+			var myOptions = {
+					zoom:15,
+					center:new google.maps.LatLng(32.884815, 13.221111),
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+				marker = new google.maps.Marker(
+					{
+						map: map,position: new google.maps.LatLng(32.884815,13.221111)
+					});
+					google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
+					infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
+		</script>
+
 {% endblock %}

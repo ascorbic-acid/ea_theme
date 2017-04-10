@@ -126,6 +126,7 @@ login.login_handlers = (function() {
 	var login_handlers = {
 		200: function(data) {
 			if(data.message=="Logged In") {
+
 				window.location.href = get_url_arg("redirect-to") || data.home_page;
 			} else if(data.message=="No App") {
 				if(localStorage) {
@@ -136,6 +137,7 @@ login.login_handlers = (function() {
 				}
 
 				if(data.redirect_to) {
+					
 					window.location.href = data.redirect_to;
 				}
 
